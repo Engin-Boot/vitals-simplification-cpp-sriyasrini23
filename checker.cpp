@@ -4,6 +4,7 @@ bool is_in_limits (float value, float lower_limit, float upper_limit)
 {
   return ( value<upper_limit && value>lower_limit);
 }
+
 bool bpm_is_Ok(float bpm)
 {
   return is_in_limit(bpm, 70, 150);
