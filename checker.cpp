@@ -31,6 +31,7 @@ int main()
 {
   assert (is_in_limits(20,10,30) == true);
   assert (is_in_limits(10,20,30) == false);
+  assert (is_in_limits(40,20,30) == false);
   assert (is_in_limits(10,10,30) == true);
   assert (is_in_limits(30,10,30) == true);
   
