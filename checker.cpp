@@ -23,5 +23,5 @@ int main()
   
   assert(vitalsAreOk(80, 95, 60) == true);
   assert(vitalsAreOk(60, 90, 40) == false);
-  
+  assert(vitalsAreOk(80, 90, 100) == false);
 }
