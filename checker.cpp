@@ -9,6 +9,7 @@ void raiseSoundAlert (const char * vitalName, const char* level)
 
 bool level_is_ok (const char* name, float value, float lower_limit, float upper_limit)
 {
+
   if (value<lower_limit)
   {
    raiseSoundAlert (name, "LOW");
@@ -31,7 +32,9 @@ bool is_in_limits (float value, float lower_limit, float upper_limit)
 
 bool vitalsAreOk(float bpm, float spo2, float respRate) 
 {
-    return( level_is_ok("bpm",bpm, 70, 150) && level_is_ok("spo2",spo2, 90, 100) && level_is_ok("respRape",respRate, 30, 95) );  
+    return( level_is_ok("bpm",bpm, 70, 150) 
+           && level_is_ok("spo2",spo2, 90, 100) 
+           && level_is_ok("respRate",respRate, 30, 95) );  
 }
 
 int main() 
