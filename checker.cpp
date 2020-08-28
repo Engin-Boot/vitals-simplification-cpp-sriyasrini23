@@ -44,6 +44,6 @@ int main()
   assert(vitalsAreOk(160, 90, 40) == false);
   assert(vitalsAreOk(80, 80, 100) == false);
   assert(vitalsAreOk(80, 110, 100) == false);
-  assert(vitalsAreOk(80, 90, 90) == false);
+  assert(vitalsAreOk(80, 90, 20) == false);
   assert(vitalsAreOk(80, 90, 100) == false);
 }
