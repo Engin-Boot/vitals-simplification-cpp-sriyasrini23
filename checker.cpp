@@ -1,49 +1,37 @@
 #include <assert.h>
-#include <iostream>
+#include<iostream>
+using namespace std;
 
+class AlertBasetype {
+public:
+	virtual void alert(const char* vitalname, const char* level) = 0;
+};
 
-void raiseSoundAlert (const char * vitalName, const char* level)
+class AlertSMS : public AlertBasetype {
+public:
+	void alert(const char* vitalname, const char* level) {
+		cout << "SMS: " << vitalname << " is " << level << " !" << endl;
+	}
+};
+
+class AlertSound : public AlertBasetype {
+public:
+	void alert(const char* vitalname, const char* level) {
+		cout << "Sound: " << vitalname << " is " << level << " !" << endl;
+	}
+};
+
+int main()
 {
-  std::cout << "Sound: " << vitalName << " is " << level << std::endl;
-}
+	AlertBasetype *alert1, *alert2;
+	AlertSMS sms;
+	AlertSound sound;
+	
+	alert1 = &sms;
+	alert1->alert("BP","high");
 
-bool level_is_ok (const char* name, float value, float lower_limit, float upper_limit)
-{
+	alert2 = &sound;
+	alert2->alert("SPO2", "LOW");
 
-  if (value<lower_limit)
-  {
-   raiseSoundAlert (name, "LOW");
-    return false;
-  }
-  else if (value>upper_limit)
-  {
-    raiseSoundAlert (name, "HIGH");
-    return false;
-  }
-  else 
-    return true;
-    
-}
-
-bool is_in_limits (float value, float lower_limit, float upper_limit)
-{ 
-  return (value<=upper_limit && value>=lower_limit);
-}
-
-bool vitalsAreOk(float bpm, float spo2, float respRate) 
-{
-    return( level_is_ok("bpm",bpm, 70, 150) 
-           && level_is_ok("spo2",spo2, 90, 100) 
-           && level_is_ok("respRate",respRate, 30, 95) );  
-}
-
-int main() 
-{
-  assert(vitalsAreOk(80, 95, 60) == true);
-  assert(vitalsAreOk(60, 90, 40) == false);
-  assert(vitalsAreOk(160, 90, 40) == false);
-  assert(vitalsAreOk(80, 80, 100) == false);
-  assert(vitalsAreOk(80, 110, 100) == false);
-  assert(vitalsAreOk(80, 90, 20) == false);
-  assert(vitalsAreOk(80, 90, 100) == false);
+	return 0;
 }
