@@ -75,7 +75,7 @@ int main()
 
 	VitalCheck("BPM", 160, 70, 150, alert_sound);
 	VitalCheck("BPM", 60, 70, 150, alert_sms);
-	VitalCheck("BPM", 80, 70, 150, alert_sms)
+	VitalCheck("BPM", 80, 70, 150, alert_sms);
 	
 	return 0;
 }
