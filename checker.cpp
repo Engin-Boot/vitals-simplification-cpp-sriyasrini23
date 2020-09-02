@@ -34,12 +34,13 @@ private:
 	AlertBasetype* _alert;
 
 public:
+	VitalCheck();
 	VitalCheck(const char*, float, float, float, AlertBasetype* alert);
 	
 	void SetLevel();
 	bool Level_is_ok();  
 };
-
+VitalCheck::VitalCheck() : _value(0), _upper_limit(0), _lower_limit(0) {}
 VitalCheck::VitalCheck(const char* name, float value, float lower_limit, float upper_limit, AlertBasetype* alert) :
 _name(name), _value(value), _lower_limit(lower_limit), _upper_limit(upper_limit), _alert(alert)
 {
@@ -65,6 +66,25 @@ bool VitalCheck::Level_is_ok()
 	else
 		return true;	
 }
+
+class PatientVitals
+{
+private:
+	VitalCheck _bpm;
+	VitalCheck _spo2;
+	VitalCheck _respRate;
+public:
+	PatientVitals(float bpm, float spo2, float resprate, AlertBasetype* alert);
+};
+
+PatientVitals::PatientVitals(float bpm, float spo2, float respRate, AlertBasetype* alert)
+{
+	VitalCheck _bpm("BPM", bpm, 70, 150, alert);
+	VitalCheck _spo2("SPO2", spo2, 90, 100, alert);
+	VitalCheck _respRate("RespRate", respRate, 24, 30, alert);
+}
+
+
 int main()
 {
 	AlertBasetype *alert_sms, *alert_sound;
@@ -73,9 +93,9 @@ int main()
 	alert_sms = &alert1;
 	alert_sound = &alert2;
 
-	VitalCheck("BPM", 160, 70, 150, alert_sound);
-	VitalCheck("BPM", 60, 70, 150, alert_sms);
-	VitalCheck("BPM", 80, 70, 150, alert_sms);
-	
+	PatientVitals(60, 80, 20, alert_sms);
+	PatientVitals(160, 180, 120, alert_sound);
+	PatientVitals(80, 95, 25, alert_sms);
+
 	return 0;
 }
