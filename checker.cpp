@@ -80,9 +80,9 @@ public:
 
 PatientVitals::PatientVitals(float bpm, float spo2, float respRate, AlertBasetype* alert)
 {
-	_bpm("BPM", bpm, 70, 150, alert);
-	_spo2("SPO2", spo2, 90, 100, alert);
-	_respRate("RespRate", respRate, 24, 30, alert);
+	VitalCheck _bpm("BPM", bpm, 70, 150, alert);
+	VitalCheck _spo2("SPO2", spo2, 90, 100, alert);
+	VitalCheck _respRate("RespRate", respRate, 24, 30, alert);
 }
 
 
