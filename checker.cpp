@@ -40,10 +40,11 @@ public:
 	void SetLevel();
 	bool Level_is_ok();  
 };
-VitalCheck::VitalCheck() : _value(0), _upper_limit(0), _lower_limit(0) {}
+VitalCheck::VitalCheck() : _value(0), _upper_limit(0), _lower_limit(0) {cout<<"default constructor" <<endl}
 VitalCheck::VitalCheck(const char* name, float value, float lower_limit, float upper_limit, AlertBasetype* alert) :
 _name(name), _value(value), _lower_limit(lower_limit), _upper_limit(upper_limit), _alert(alert)
 {
+	cout<<"non-default constructor"<<endl;
 	SetLevel();
 	Level_is_ok();
 }
@@ -79,9 +80,9 @@ public:
 
 PatientVitals::PatientVitals(float bpm, float spo2, float respRate, AlertBasetype* alert)
 {
-	VitalCheck _bpm("BPM", bpm, 70, 150, alert);
-	VitalCheck _spo2("SPO2", spo2, 90, 100, alert);
-	VitalCheck _respRate("RespRate", respRate, 24, 30, alert);
+	_bpm("BPM", bpm, 70, 150, alert);
+	_spo2("SPO2", spo2, 90, 100, alert);
+	_respRate("RespRate", respRate, 24, 30, alert);
 }
 
 
