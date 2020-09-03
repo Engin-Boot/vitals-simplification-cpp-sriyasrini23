@@ -40,7 +40,7 @@ public:
 	void SetLevel();
 	bool Level_is_ok();  
 };
-VitalCheck::VitalCheck() : _value(0), _upper_limit(0), _lower_limit(0) {cout<<"default constructor" <<endl}
+VitalCheck::VitalCheck() : _value(0), _upper_limit(0), _lower_limit(0) {cout<<"default constructor" <<endl;}
 VitalCheck::VitalCheck(const char* name, float value, float lower_limit, float upper_limit, AlertBasetype* alert) :
 _name(name), _value(value), _lower_limit(lower_limit), _upper_limit(upper_limit), _alert(alert)
 {
